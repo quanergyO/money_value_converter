@@ -29,3 +29,19 @@ func New(dto *investapi.MoneyValue) (Money, error) {
 
 	return result, nil
 }
+
+func (m *Money) Add(rhs *Money) {
+	if rhs == nil {
+		return
+	}
+
+	m.Units += rhs.Units
+}
+
+func (m *Money) Sub(rhs *Money) {
+	if rhs == nil {
+		return
+	}
+
+	m.Units -= rhs.Units
+}
