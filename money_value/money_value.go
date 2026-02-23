@@ -11,12 +11,12 @@ const (
 )
 
 type Money struct {
-	units int64
+	Units int64
 }
 
 func New(dto *investapi.MoneyValue) (Money, error) {
 	const mult = 1000000000
-	result := Money{units: 0}
+	result := Money{Units: 0}
 	if dto == nil {
 		return result, errors.New("empty dto")
 	}
@@ -25,7 +25,7 @@ func New(dto *investapi.MoneyValue) (Money, error) {
 		return result, errors.New("unsuported currency")
 	}
 
-	result.units += dto.Units*mult + int64(dto.Nano)
+	result.Units += dto.Units*mult + int64(dto.Nano)
 
 	return result, nil
 }
